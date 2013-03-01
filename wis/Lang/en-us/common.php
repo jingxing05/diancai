@@ -1,0 +1,1 @@
+<?phpreturn array(    'WELCOM_WORDS'=>'Welcome to Wireless Menu system');
