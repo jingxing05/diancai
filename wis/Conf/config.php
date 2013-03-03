@@ -28,7 +28,7 @@ return array(
 
 
     /* 错误设置 */
-
+    'APP_STATUS' => 'debug', //应用调试模式状态
 
     /* 日志设置 */
 

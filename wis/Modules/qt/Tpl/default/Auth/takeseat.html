@@ -1,0 +1,16 @@
+<extend name="Public:layout" />
+<block name="left"></block>
+<block name="right"></block>
+
+<block name="main">
+    <div data-role="content" class="">
+        <h1>{$Think.lang.LOGIN_TIP}</h1>
+        <form name="qt_login_form" id="qt_login_form" action="{:U('qt/Auth/checktable')}" method="post">
+            <label for="unique_tableid">{$Think.lang.TABLE_UNIQUEID}</label>
+            <input type="text" name="unique_tableid" id="unique_tableid" required="true"
+                   value="" placeholder="{$Think.lang.LOGIN_INPUT_TIP}" />
+            <label for="login_btn" class="ui-hidden-accessible">{$Think.lang.TABLE_UNIQUEID}</label>
+            <input  type="submit" id="login_btn" value="{$Think.lang.BUTTON_SUBMIT_LOGIN}" />
+        </form>
+    </div>
+</block>
