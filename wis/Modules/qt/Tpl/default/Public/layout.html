@@ -7,6 +7,8 @@
     <block name="description"><meta name="Description" content="一个促进o2o的社会化社交平台"/></block>
     <block name="title"><title>首页 - {$Think.lang.SITE_NAME}</title></block>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.js"></script>
 </head>
 <body>
     <div data-role="page" class="">
@@ -62,6 +64,11 @@
                                 <span class="ui-icon ui-icon-home ui-icon-shadow">&nbsp;</span>
                             </span>
                         </a>
+                        <a href="{:U('qt/Auth/login')}" data-role="button" data-ajax="false" data-corners="true"
+                           data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"
+                           class="ui-btn ui-btn-up-c">
+                            <span class="ui-btn-inner"><span class="ui-btn-text">Login</span></span>
+                        </a>
                         <a href="/question?catalog=1" data-role="button" data-ajax="false" data-corners="true"
                            data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"
                            class="ui-btn ui-btn-up-c">
@@ -76,8 +83,6 @@
             </div>
         </block>
     </div><!-- /page -->
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.js"></script>
     <script>
         //设置桌号
         var foo = localStorage.getItem("bar");
