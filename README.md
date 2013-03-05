@@ -1,5 +1,5 @@
-diancai 点菜
+川流网移动版
 =======
 
-diancai is a new type of order system for restarant
-点菜是一款新型的饭店适用的电子菜谱点单系统
+chuanliu is a new type of order system for restarant and goods sale.
+川流网移动版
