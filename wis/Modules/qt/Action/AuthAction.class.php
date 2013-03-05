@@ -14,7 +14,6 @@ class AuthAction extends Action {
     }
 
     public function checktable($unique_tblid = 0){
-        dump($_POST);
         if($this->_post('unique_tableid')){
             //查看该桌是否已经离桌
             //记录桌号
