@@ -17,20 +17,21 @@ return array(
 
     /* 数据库设置 */
     'DB_TYPE' => 'mysql', // 数据库类型
-    'DB_HOST' => '192.168.1.111', // 服务器地址
+    'DB_HOST' => '180.96.20.165', // 服务器地址
     'DB_NAME' => 'chuanliugoods', // 数据库名
     'DB_USER' => 'root', // 用户名
-    'DB_PWD' => '123456', // 密码
+    'DB_PWD' => '111111', // 密码
     'DB_PORT' => '3306', // 端口
     'DB_PREFIX' => 'hd_', // 数据库表前缀
 
     /* 数据缓存设置 */
 
 
-    /* 错误设置 */
-    'APP_STATUS' => 'debug', //应用调试模式状态
 
     /* 日志设置 */
+    'APP_STATUS' => 'debug', //应用调试模式状态
+    'LOG_RECORD' => true, // 开启日志记录
+    'LOG_LEVEL' => 'EMERG,ALERT,CRIT,ERR,SQL', // 只记录EMERG ALERT CRIT ERR 错误
 
 
     /* SESSION设置 */
@@ -45,19 +46,20 @@ return array(
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式，提供最好的用户体验和SEO支持
     'URL_PATHINFO_DEPR' => '/', // PATHINFO模式下，各参数之间的分割符号
 
-
-    /* 系统变量名称设置 */
-
+    /* 安全设置 */
+    'TOKEN_ON' => true, // 是否开启令牌验证 默认关闭
+    'TOKEN_NAME' => '__formsh__', // 令牌验证的表单隐藏字段名称
+    'DB_FIELDTYPE_CHECK' => true,
+    /* 多语言设置 */
     'LANG_AUTO_DETECT' => true, // 自动侦测语言 开启多语言功能后有效
     'LANG_LIST' => 'zh-cn,en-us', // 允许切换的语言列表 用逗号分隔
     'LANG_SWITCH_ON' => true, // 开启语言包功能
-
     //项目配置
     'TMPL_PARSE_STRING' => array(
-        '__PUBLIC__' => '/static', // 更改默认的/Public 替换规则
-        '__JS__' => '/static/js', //  JS类库路径替换规则
-        '__CSS__' => '/static/css', //  css库路径替换规则
-        '__IMAGES__' => '/static/images', // images库路径替换规则
-        '__UPLOAD__' => '/uploads', //  上传路径替换规则
+        '__PUBLIC__' => __ROOT__.'static', // 更改默认的/Public 替换规则
+        '__JS__' => __ROOT__.'static/js', //  JS类库路径替换规则
+        '__CSS__' => __ROOT__.'/static/css', //  css库路径替换规则
+        '__IMAGES__' => __ROOT__.'/static/images', // images库路径替换规则
+        '__UPLOAD__' => __ROOT__.'/uploads', //  上传路径替换规则
     )
 );
