@@ -47,4 +47,13 @@ class IndexAction extends Action {
         $this->display();
     }
 
+
+
+    function view($pkid = 0) {
+        $Model = D('Dish');
+        $this->assign('adish', $Model->getDetail($pkid));
+        $this->assign('targeturl', $this->_server('HTTP_REFERER'));//添加菜谱后要跳到的链接
+        $this->display();
+    }
+
 }

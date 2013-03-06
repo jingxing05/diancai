@@ -11,7 +11,7 @@
     <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.js"></script>
 </head>
 <body>
-    <div data-role="page" class="my-page" id="main-page">
+    <div data-role="page">
         <block name="header">
             <div data-role="header" data-theme="b">
                 <h1>川流网前台</h1>
@@ -24,6 +24,10 @@
                         <li><a href="{:U('qt/Index/read')}">有奖评论</a></li>
                     </ul>
                 </div><!-- /navbar -->
+                <if condition="$Think.session.unique_tableid">
+                    <a data-ajax="false" href="{:U('qt/Order/index')}">桌号:{$Think.session.unique_tableid}</a>
+                </if>
+
             </div>
         </block>
         <block name="left">左边分栏</block>
@@ -56,25 +60,22 @@
                 <div data-role="controlgroup" data-type="horizontal"
                      class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
                     <div class="ui-controlgroup-controls">
-                        <a href="/" data-role="button" data-ajax="false" data-icon="home" data-corners="true"
-                           data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"
-                           class="ui-btn ui-btn-up-c ui-btn-icon-left ui-corner-left">
+                        <a href="{:U('qt/Index/index')}" data-role="button"  data-icon="home" data-theme="c" >
                             <span class="ui-btn-inner ui-corner-left">
-                                <span class="ui-btn-text">资讯</span>
-                                <span class="ui-icon ui-icon-home ui-icon-shadow">&nbsp;</span>
+                                <span class="ui-btn-text">首页</span>
                             </span>
                         </a>
-                        <a href="{:U('qt/Auth/login')}" data-role="button" data-ajax="false" data-corners="true"
-                           data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"
-                           class="ui-btn ui-btn-up-c">
-                            <span class="ui-btn-inner"><span class="ui-btn-text">Login</span></span>
-                        </a>
-                        <a href="/question?catalog=1" data-role="button" data-ajax="false" data-corners="true"
-                           data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"
-                           class="ui-btn ui-btn-up-c">
-                            <span class="ui-btn-inner"><span class="ui-btn-text">提问</span></span>
-                        </a>
-                        </div>
+                            <present name="Think.session.unique_tableid">
+                            <a href="{:U('qt/Auth/logout')}" data-role="button" data-ajax="false" data-theme="c">
+                                <span class="ui-btn-inner"><span class="ui-btn-text">登出</span></span>
+                            </a>
+                            <else />
+                            <a href="{:U('qt/Auth/takeseat')}" data-role="button" data-ajax="false"  data-theme="c" >
+                                <span class="ui-btn-inner"><span class="ui-btn-text">登入</span></span>
+                            </a>
+                        </present>
+
+                    </div>
                 </div>
                 <p>&nbsp;&COPY;&nbsp;2011~2013&nbsp;川流网</p>
 

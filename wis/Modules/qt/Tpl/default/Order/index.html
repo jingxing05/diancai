@@ -1,0 +1,62 @@
+<extend name="Public:layout" />
+<block name="left"></block>
+<block name="right"></block>
+<block name="main">
+    <div data-role="content" >
+        <table data-role="table" id="order_dishlist_table" data-mode="reflow" class="ui-responsive table-stroke">
+              <thead>
+                    <tr>
+                           <th data-priority="6">序号</th>
+                           <th data-priority="persist">菜名</th>
+                           <th data-priority="1">数量</th>
+                           <th data-priority="2">单价</th>
+                           <th data-priority="5">总价</th>
+                    <th data-priority="4">要求</th>
+                    <th data-priority="5">状态</th>
+                    <th data-priority="4">操作</th>
+                        </tr>
+                  </thead>
+              <tbody>
+                <php>$total_cost = 0;</php>
+            <volist name="dishlist" id="a_dish" mod="2">
+                <tr>
+                          <th>{$i}</th>
+                          <td>{$a_dish.name}</td>
+                          <td>{$a_dish.amount}</td>
+                          <td>{$a_dish.price}</td>
+                          <td><php>$xiaoji_e = ($a_dish['amount'] * $a_dish['price']);
+                $total_cost += $xiaoji_e; echo ($xiaoji_e);</php></td>
+                <td>{$a_dish.special}</td>
+                <td>未下单</td>
+                <td>
+                    <a type="button" data-ajax="false" class="tuicai_href" data-href="{:U('qt/Order/deletecartdish',array('pkid'=>$a_dish['ctid']))}" >退菜</a>
+                </td>
+                </tr>
+            </volist>
+
+            <tr>
+                <th>统计</th>
+                      <td></td>
+                      <td></td>
+                      <td> </td>
+                      <td>{$total_cost}</td>
+            <td> </td>
+            <td> </td>
+            <td></td>
+            </tr>
+              </tbody>
+        </table>
+
+
+
+    </div>
+    <script>
+
+        $(".tuicai_href").on( "click", function() {
+            var answer=confirm("确认退掉该菜？");
+            if(answer==true){
+                $.mobile.changePage($(this).attr('data-href'), { transition: "slideup"} );
+            }
+        });
+    </script>
+</block>

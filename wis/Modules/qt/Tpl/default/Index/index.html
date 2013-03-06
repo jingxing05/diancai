@@ -2,19 +2,19 @@
 <block name="left"></block>
 <block name="right"></block>
 <block name="main">
-    <div data-role="content">
+    <div data-role="content"  class="my-page" id="main-page">
         <style>
             /* A bit custom styling */
             .my-page {
-                background: #222;
+/*                background: #222;*/
             }
             /* Link to the Google webfont is in the head */
             .my-page .ui-title, .my-page .ui-li-aside {
-                font-family: 'Open Sans', sans-serif;
+                /*font-family: 'Open Sans', sans-serif;*/
                 font-weight: 400;
             }
             .my-page .ui-header {
-                color: #990099;
+                /*color: #990099;*/
             }
             .my-page .ui-footer {
                 color: #666;
@@ -124,7 +124,7 @@
                     border-bottom-right-radius: inherit;
                 }
                 /* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
-                .my-page .ui-listview .ui-li-desc .ui-li-aside {
+                .my-page .ui-listview .ui-li-desc.ui-li-aside {
                     padding: 2px 10px;
                     width: auto;
                     min-height: 0;
@@ -182,16 +182,15 @@
                     margin: 10px 1%;
                 }
             }
-
-            /* For this demo we used images with a size of 310x310 pixels. Just before the second breakpoint the images reach their max width: 1019px - 2 x 9px padding = 1001px x 30.9333% = ~310px */
         </style>
         <ul data-role="listview" data-inset="true">
             <volist name="list" id="a_dish" mod="2">
                 <li>
                     <a href="#">
-                        <img src='__IMAGES__/t/<eq name="mod" value="1">firefox_os.png<else />lumia_800.png</eq>'>
+                        <img src='__IMAGES__/t/<eq name="mod" value="1">firefox_os.png<else />nexus_7.png</eq>'>
                         <h2>{$a_dish.name}</h2>
                         <p>{$a_dish.descr}</p>
+                        <p><a href="{:U('qt/Index/view', array('pkid'=>$a_dish['did']))}">详情</a></p>
                         <p class="ui-li-aside">&yen;{$a_dish.price}</p>
                     </a>
                 </li>

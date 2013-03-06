@@ -1,0 +1,64 @@
+<extend name="Public:layout" />
+<block name="left"></block>
+<block name="right"></block>
+<block name="header">
+    <div data-role="header" data-theme="b">
+        <a href="#" data-icon="back" data-rel="back">返回</a>
+        <h1>{$adish.name}</h1>
+    </div>
+</block>
+
+<block name="main">
+    <div data-role="content">
+        <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">描述，图片浏览</li>
+                    <li>
+                        <img src='__IMAGES__/t/<php>if($adish['did']%2==0){ echo 'firefox_os.png';}else { echo 'nexus_7.png';}</php>' />
+                    </li>
+                    <li>
+                        {$adish.descr}
+                    </li>
+                    <li>其他属性，如口味，适合人群，等</li>
+                </ul>
+
+
+
+            </div>
+            <div class="ui-block-b">
+                <form name="order_item" action="{:U('qt/Order/addcartdish')}" method="POST">
+                    <input type="hidden" name="zhuohao" value="{$Think.session.unique_tableid}">
+                    <input type="hidden" name="caipin" value="{$adish.did}">
+                    <input type="hidden" name="caiming" value="{$adish.name}">
+                    <input type="hidden" name="dangshijiage" value="{$adish.price}">
+                    <input type="hidden" name="mubiaourl" value="{$targeturl}">
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                            <fieldset class="ui-grid-a">
+                                <div class="ui-block-a">本店价格:<strong>{$adish.price}</strong></div>
+                                <div class="ui-block-b"><STRIKE>市场价:<span id="scjg">{$adish.mprice}</span> </STRIKE></div>
+                            </fieldset>
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="shuliang" class="select">数量</label>
+                            <select name="shuliang" id="shuliang" data-native-menu="false">
+                                <for start="1" end="13" step="1" name="dishamount" >
+                                    <option value="{$dishamount}">{$dishamount}</option>
+                                </for>
+                            </select>
+                        </li>
+
+                        <li data-role="fieldcontain">
+                            <label for="teshuyaoqiu">要求</label>
+                            <textarea cols="10" rows="4" name="teshuyaoqiu" maxlength="50" id="teshuyaoqiu" placeholder="输入您的特殊要求..."></textarea>
+                        </li>
+                        <li >
+                            <input type="submit" value="加入菜谱" data-icon="plus" data-iconpos="right">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</block>

@@ -13,8 +13,6 @@ class DishModel extends Model {
      * @return type
      */
     public function getList($count = 4) {
-
-
         return $this->order('id DESC')->field(true)->limit($count)->select();
     }
 
@@ -71,7 +69,7 @@ class DishModel extends Model {
         'pkid' => 'did',
         'xgsj' => 'mtime', //修改时间
         'cjsj' => 'ctime', //创建时间
-        'jg' => 'price', //价格
+        'bdjg' => 'price', //本店价格
         'scjg' => 'mprice', //市场价格
         'tp' => 'pic', //图片
         'cm' => 'name', //菜名
