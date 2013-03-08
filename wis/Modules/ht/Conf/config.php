@@ -1,4 +1,5 @@
 <?php
+
 // +----------------------------------------------------------------------
 // | TOPThink [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -11,9 +12,10 @@
 // $Id$
 
 return array(
-    'SESSION_AUTO_START'        =>  true,
-    'USER_AUTH_KEY'             =>  'authId',	// 用户认证SESSION标记
-    'ADMIN_AUTH_KEY'			=>  'administrator',
-    'AUTH_PWD_ENCODER'          =>  'md5',	// 用户认证密码加密方式
-    'DB_LIKE_FIELDS'            =>  'title|remark',
+    'SESSION_AUTO_START' => true,
+    'USER_AUTH_KEY' => 'authId', // 用户认证SESSION标记
+    'ADMIN_AUTH_KEY' => 'administrator',
+    'AUTH_PWD_ENCODER' => 'md5', // 用户认证密码加密方式
+    'DB_LIKE_FIELDS' => 'title|remark',
+    'URL_CASE_INSENSITIVE' => true, // 默认false 表示URL区分大小写 true则表示不区分大小写
 );

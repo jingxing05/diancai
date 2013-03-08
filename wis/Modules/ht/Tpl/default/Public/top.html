@@ -1,0 +1,30 @@
+<div data-options="region:'north',border:false" style="height:70px; padding:10px">
+    <table cellpadding="0" cellspacing="0" style="width:100%;">
+        <tr>
+            <td style="height:58px;width:180px;">
+                <img SRC="__IMAGES__/logo.png" BORDER="0" ALT="hougai" align="absmiddle"/>
+            </td>
+            <td>
+                <ul class="horizon">
+                    <li >
+                        <a href="{:U('ht/Index/index')}" class="easyui-linkbutton"
+                           data-options="plain:true,iconCls:'icon-redo'">就餐情况</a>
+                    </li>
+                    <li >
+                        <a href="{:U('ht/Index/index')}" class="easyui-linkbutton"
+                           data-options="plain:true,iconCls:'icon-print'">常用功能1</a>
+                    </li>
+                    <li>
+                        <a href="{:U('ht/Index/index')}" class="easyui-linkbutton"
+                           data-options="plain:true,iconCls:'icon-print'">常用功能2</a>
+                    </li>
+                </ul>
+            </td>
+            <td  style="width:160px;text-align:right;vertical-align:bottom;">
+                欢迎您！{$Think.session.loginUserName}
+                <a href="{:U('qt/Index/index')}"> 前 台 </a>
+                <a href="__URL__/logout/" target="_top"> 退 出 </a>
+            </td>
+        </tr>
+    </table>
+</div>

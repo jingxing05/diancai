@@ -1,95 +1,102 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <block name="keywords"><meta name="Keywords" content="川流网,电商社区,o2o"/></block>
-    <block name="description"><meta name="Description" content="一个促进o2o的社会化社交平台"/></block>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <block name="keywords">
+        <meta name="Keywords" content="川流网,电商社区,o2o"/>
+    </block>
+    <block name="description">
+        <meta name="Description" content="一个促进o2o的社会化社交平台"/>
+    </block>
     <block name="title"><title>首页 - {$Think.lang.SITE_NAME}</title></block>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.js"></script>
 </head>
 <body>
-    <div data-role="page">
-        <block name="header">
-            <div data-role="header" data-theme="b">
-                <h1>川流网前台</h1>
-                <div data-role="navbar" data-grid="d" data-theme="c">
-                    <ul>
-                        <li><a href="{:U('/')}" class="ui-btn-active">首页</a></li>
-                        <li><a href="{:U('qt/Index/read')}">本店特色</a></li>
-                        <li><a href="{:U('qt/Index/read')}">路线地图</a></li>
-                        <li><a href="{:U('qt/Index/read')}">演艺日历</a></li>
-                        <li><a href="{:U('qt/Index/read')}">有奖评论</a></li>
-                    </ul>
-                </div><!-- /navbar -->
-                <if condition="$Think.session.unique_tableid">
-                    <a data-ajax="false" href="{:U('qt/Order/index')}">桌号:{$Think.session.unique_tableid}</a>
-                </if>
+<div data-role="page">
+    <block name="header">
+        <div data-role="header" data-theme="b">
+            <h1>川流网前台</h1>
 
+            <div data-role="navbar" data-grid="d" data-theme="c">
+                <ul>
+                    <li><a href="{:U('/')}" class="ui-btn-active">首页</a></li>
+                    <li><a href="{:U('qt/Index/read')}">本店特色</a></li>
+                    <li><a href="{:U('qt/Index/read')}">路线地图</a></li>
+                    <li><a href="{:U('qt/Index/read')}">演艺日历</a></li>
+                    <li><a href="{:U('qt/Index/read')}">有奖评论</a></li>
+                </ul>
             </div>
-        </block>
-        <block name="left">左边分栏</block>
-        <block name="main">
-            <div data-role="content" class="">
-                <h1>川流网</h1>
-                <p class="jqm-intro">
-                    All form widgets begin with native form elements with rich HTML semantics
-                    that are enhanced to make them more attractive and finger-friendly.
-                </p>
-                <h2>关于我们</h2>
-                <p>When constructing forms to be used in jQuery Mobile,
-                    most of the standard guidelines used to create forms that submit via ordinary HTTP POST or GET
-                    still apply.
-                    Additionally, the <code>id</code>
-                    attributes of form controls need to be not only unique on a given page,
-                    but also unique across the pages in a site.
-                    This is because jQuery Mobile's single-page navigation model allows many different "pages"
-                    to be present in the DOM at the same time.
-                    You must be careful to use unique <code>id</code> attributes so there will be only one of each
-                    in the DOM.
-                    Be sure to pair them properly with <code>label</code> elements via the <code>for</code> attribute.
-                </p>
+            <!-- /navbar -->
+            <if condition="$Think.session.unique_tableid">
+                <a data-ajax="false" href="{:U('qt/Order/index')}">桌号:{$Think.session.unique_tableid}</a>
+            </if>
 
-            </div>
-        </block>
-        <block name="right">右边分栏</block>
-        <block name="footer">
-            <div data-role="footer" data-theme="d">
-                <div data-role="controlgroup" data-type="horizontal"
-                     class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
-                    <div class="ui-controlgroup-controls">
-                        <a href="{:U('qt/Index/index')}" data-role="button"  data-icon="home" data-theme="c" >
+        </div>
+    </block>
+    <block name="left">左边分栏</block>
+    <block name="main">
+        <div data-role="content" class="">
+            <h1>川流网</h1>
+
+            <p class="jqm-intro">
+                All form widgets begin with native form elements with rich HTML semantics
+                that are enhanced to make them more attractive and finger-friendly.
+            </p>
+
+            <h2>关于我们</h2>
+
+            <p>When constructing forms to be used in jQuery Mobile,
+                most of the standard guidelines used to create forms that submit via ordinary HTTP POST or GET
+                still apply.
+                Additionally, the <code>id</code>
+                attributes of form controls need to be not only unique on a given page,
+                but also unique across the pages in a site.
+                This is because jQuery Mobile's single-page navigation model allows many different "pages"
+                to be present in the DOM at the same time.
+                You must be careful to use unique <code>id</code> attributes so there will be only one of each
+                in the DOM.
+                Be sure to pair them properly with <code>label</code> elements via the <code>for</code> attribute.
+            </p>
+
+        </div>
+    </block>
+    <block name="right">右边分栏</block>
+    <block name="footer">
+        <div data-role="footer" data-theme="d">
+            <div data-role="controlgroup" data-type="horizontal"
+                 class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
+                <div class="ui-controlgroup-controls">
+                    <a href="{:U('qt/Index/index')}" data-role="button" data-icon="home" data-theme="c">
                             <span class="ui-btn-inner ui-corner-left">
                                 <span class="ui-btn-text">首页</span>
                             </span>
+                    </a>
+                    <present name="Think.session.unique_tableid">
+                        <a href="{:U('qt/Auth/logout')}" data-role="button" data-ajax="false" data-theme="c">
+                            <span class="ui-btn-inner"><span class="ui-btn-text">登出</span></span>
                         </a>
-                            <present name="Think.session.unique_tableid">
-                            <a href="{:U('qt/Auth/logout')}" data-role="button" data-ajax="false" data-theme="c">
-                                <span class="ui-btn-inner"><span class="ui-btn-text">登出</span></span>
-                            </a>
-                            <else />
-                            <a href="{:U('qt/Auth/takeseat')}" data-role="button" data-ajax="false"  data-theme="c" >
-                                <span class="ui-btn-inner"><span class="ui-btn-text">登入</span></span>
-                            </a>
-                        </present>
+                        <else/>
+                        <a href="{:U('qt/Auth/takeseat')}" data-role="button" data-ajax="false" data-theme="c">
+                            <span class="ui-btn-inner"><span class="ui-btn-text">登入</span></span>
+                        </a>
+                    </present>
 
-                    </div>
                 </div>
-                <p>&nbsp;&COPY;&nbsp;2011~2013&nbsp;川流网</p>
-
-
-
             </div>
-        </block>
-    </div><!-- /page -->
-    <script>
-        //设置桌号
-        var foo = localStorage.getItem("bar");
+            <p>&nbsp;&COPY;&nbsp;2011~2013&nbsp;川流网</p>
 
 
+        </div>
+    </block>
+</div>
+<!-- /page -->
+<script>
+    //设置桌号
 
-    </script>
+
+</script>
 </body>
 </html>

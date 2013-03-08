@@ -57,7 +57,7 @@ return array(
     //项目配置
     'TMPL_PARSE_STRING' => array(
         '__PUBLIC__' => __ROOT__.'static', // 更改默认的/Public 替换规则
-        '__JS__' => __ROOT__.'static/js', //  JS类库路径替换规则
+        '__JS__' => __ROOT__.'/static/js', //  JS类库路径替换规则
         '__CSS__' => __ROOT__.'/static/css', //  css库路径替换规则
         '__IMAGES__' => __ROOT__.'/static/images', // images库路径替换规则
         '__UPLOAD__' => __ROOT__.'/uploads', //  上传路径替换规则

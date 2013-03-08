@@ -1,0 +1,65 @@
+<script>
+    $(function(){
+        $('#functionmenu p').click( function(){
+            $.messager.alert('Info', $(this).attr('url'), 'info')
+            open1($(this).attr('url'),$(this).html())
+        })
+    });
+    function open1(url,title){
+        if ($('#ht_main_content').tabs('exists',title)){
+            $('#ht_main_content').tabs('select', title);
+        } else {
+            $('#ht_main_content').tabs('add',{
+                title:title,
+                href:url,
+                closable:true
+            });
+        }
+    }
+</script>
+<div data-options="region:'west',split:true,title:'功能导航'" style="width:200px;">
+    <div id="functionmenu" class="easyui-accordion" fit="true">
+        <div title="就餐" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p url="__GROUP__/Form/index/">就餐状况</p>
+            <p url="__GROUP__/Form/index/">数据管理</p>
+            <p url="__GROUP__/Form/index/">数据管理</p>
+            <p url="__GROUP__/Form/index/">数据管理</p>
+        </div>
+        <div title="财务管理" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+        </div>
+
+        <div title="用户管理" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+        </div>
+        <div title="菜品管理" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+        </div>
+        <div title="系统设置" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+            <p><a href="__GROUP__/Form/index/">数据管理</a></p>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>

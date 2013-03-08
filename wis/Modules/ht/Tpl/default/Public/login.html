@@ -1,0 +1,94 @@
+<extend name="Public:htlayout"/>
+<block name="header"></block>
+<block name="left"></block>
+<block name="right"></block>
+<block name="footer"></block>
+<block name="main">
+    <script>
+        function keydown(e) {
+            //$.messager.alert('Info', 'dddddd', 'info')
+            $('#form_login').form('submit', {
+                url: '__URL__/pass',
+                onSubmit: function () {
+                    //清除原因
+                    var $msgs = $("[id^=error_msg_]")
+                    $.each($msgs,function(k,v){
+                              $(v).html('');
+                    })
+
+                    var isValid = $(this).form('validate');
+                    return isValid;	// return false will stop the form submission
+                },
+                success: function (ret) {
+                    var ret = eval('(' + ret + ')');
+                    if(true!=ret){
+                        $('input[name="' +ret.f +  '"]').focus()
+                        //提示原因
+
+                        $('#error_msg_'+ ret.f).html(ret.m);
+                    } else {
+                        $.messager.alert('登录', '恭喜您，登录成功!', 'info')
+                        //成功则进入首页
+                        window.location="{:U('ht/Index/index')}";
+                    }
+                }
+            })
+        }
+
+
+        function freshVerify() {
+            //重载验证码
+            var timestir = '__URL__/verify/' + new Date().getTime();
+            $('#verifyImg').attr('src',timestir);
+        }
+
+    </script>
+    <div data-options="region:'center',border:'false'">
+        <div class="easyui-panel" title="管理后台登录" style="width:420px;margin: 0 auto;">
+            <form style="padding:10px 20px;" method='post' id="form_login" ACTION="__URL__/checkLogin">
+                <table>
+                    <tr>
+                        <td>帐号:</td>
+                        <td>
+                            <input class="easyui-validatebox" type="text" placeholder="输入您的帐号"
+                                   name="zhanghao" data-options="required:true"/>
+                        </td>
+                        <td>
+                            <span id="error_msg_zhanghao" class="error"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>密码:</td>
+                        <td>
+                            <input class="easyui-validatebox" type="password" name="mima"
+                                   data-options="required:true" placeholder="输入密码"/>
+                        </td>
+                        <td>
+                            <span id="error_msg_mima"  class="error"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>验证码:</td>
+                        <td>
+                            <input class="easyui-validatebox" type="text" name="verifycode"
+                                   data-options="required:true"/>
+                            <img id="verifyImg" src="__URL__/verify/" onclick="freshVerify()" BORDER="0"
+                                 alt="点击刷新验证码" title="点击刷新验证码"
+                                 style="cursor:pointer" align="absmiddle">
+                        </td>
+                        <td>
+                            <span id="error_msg_verifycode"  class="error"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><a href="#" onclick="keydown(this)" class="easyui-linkbutton" icon="icon-ok">登入</a>
+                            <a href="{:U('qt/Index/index')}" class="easyui-linkbutton" icon="icon-redo">前台</a>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+    </div>
+</block>
