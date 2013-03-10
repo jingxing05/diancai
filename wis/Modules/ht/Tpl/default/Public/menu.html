@@ -1,7 +1,7 @@
 <script>
     $(function(){
         $('#functionmenu p').click( function(){
-            $.messager.alert('Info', $(this).attr('url'), 'info')
+            //$.messager.alert('Info', $(this).attr('url'), 'info')
             open1($(this).attr('url'),$(this).html())
         })
     });
@@ -19,11 +19,10 @@
 </script>
 <div data-options="region:'west',split:true,title:'功能导航'" style="width:200px;">
     <div id="functionmenu" class="easyui-accordion" fit="true">
-        <div title="就餐" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
-            <p url="__GROUP__/Form/index/">就餐状况</p>
-            <p url="__GROUP__/Form/index/">数据管理</p>
-            <p url="__GROUP__/Form/index/">数据管理</p>
-            <p url="__GROUP__/Form/index/">数据管理</p>
+        <div title="餐桌管理" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p url="__GROUP__/desk/index">就餐状况</p>
+            <p url="__GROUP__/Form/index/">餐桌列表</p>
+            <p url="__GROUP__/Form/index/">功能</p>
         </div>
         <div title="财务管理" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
             <p><a href="__GROUP__/Form/index/">数据管理</a></p>

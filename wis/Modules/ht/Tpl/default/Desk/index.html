@@ -1,0 +1,14 @@
+<div style="position:relative;width:100%;height:500px;border:1px solid #ccc;overflow:auto;">  
+    <volist name='desklist' id='a_desk'>
+        
+        
+        
+        <div id="w{$a_desk.did}" class="easyui-window" 
+        data-options="title:'{$a_desk.name}',inline:true" 
+        style="width:250px;height:150px;padding:10px;float:left;">  
+            {$a_desk.descr} 
+        </div>  
+   
+        
+</volist>
+    </div>
