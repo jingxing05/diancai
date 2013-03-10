@@ -1,6 +1,6 @@
 <?php
  
 return  array( 
-    //¿ªÆô¶àÓïÑÔ
+    //å¼€å¯å¤šè¯­è¨€
     'app_begin' => array('CheckLang')
 );

@@ -9,7 +9,7 @@ class AuthAction extends Action {
     function _initialize() {
         if ($this->_session('unique_tableid') && ACTION_NAME != 'logout') {
             //$this->error(U('qt/Index/takeseat'));
-            $this->redirect($this->_request('qt/Index/index'));
+            redirect(U('qt/Index/index'));
         }
     }
 

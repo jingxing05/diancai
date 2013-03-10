@@ -20,37 +20,23 @@ class DishModel extends Model {
         return $this->field(true)->find($id);
     }
 
+    function uporsave($pkid = 0) {
+        $ret = false;
+        if ($this->create()) {
+            if ($pkid) {
+                $ret = $this->save();
+            } else {
+                $ret = $this->add();
+            }
+        }
+        return $ret;
+    }
+
     /**
      * #########################################
      * #后台功能区
      * #########################################
      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * #########################################
@@ -58,7 +44,6 @@ class DishModel extends Model {
      * #########################################
      */
     protected $tableName = 'item_dish';
-
     //数据库字段
     protected $fields = array(
         'did', 'mtime', 'ctime', 'price', 'mprice', 'pic', 'name', 'descr',
