@@ -1,0 +1,140 @@
+<table id="dg" title="My Users" class="easyui-datagrid" style="width:auto;height:auto"
+       url="{:U('ht/Dish/dishes')}" toolbar="#dish_toolbar" pagination="true"
+       fitColumns="true" singleSelect="true">
+    <thead>
+    <tr>
+        <th data-options="field:'did',width:80">编号</th>
+        <th data-options="field:'cm',width:150">菜名</th>
+        <th data-options="field:'price',width:60,align:'right'">价格</th>
+        <th data-options="field:'mprice',width:60,align:'right'">市场价</th>
+        <th data-options="field:'descr'">描述</th>
+        <th data-options="field:'mtime',width:120">修改时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <volist name="desklist" id="a_dish">
+        <tr>
+            <td>{$a_dish.did}</td>
+            <td>{$a_dish.name}</td>
+            <td>{$a_dish.price}</td>
+            <td>{$a_dish.mprice}</td>
+            <td>{$a_dish.descr}</td>
+            <td>{$a_dish.mtime|friendlyDate}</td>
+        </tr>
+    </volist>
+    </tbody>
+</table>
+<div id="dish_toolbar">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New
+        User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit
+        User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove
+        User</a>
+</div>
+
+<div id="dish_form_box" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     closed="true" buttons="#dish_form_buttons" modal="true">
+    <div class="ftitle">基本信息</div>
+    <form id="dish_form" method="post">
+        <div class="fitem">
+            <label>Name:</label>
+            <input name="cm" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>Last Name:</label>
+            <input name="price" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>Phone:</label>
+            <input name="mprice" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>Email:</label>
+            <input name="descr" class="easyui-validatebox" required="true">
+        </div>
+    </form>
+</div>
+<div id="dish_form_buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Save</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+       onclick="javascript:$('#dish_form_box').dialog('close')">Cancel</a>
+</div>
+<script type="text/javascript">
+    var url;
+    function newUser() {
+        $('#dish_form_box').dialog('open').dialog('setTitle', '新添');
+        $('#dish_form').form('clear');
+        url = "{:U('ht/Dish/mdish')}";
+    }
+    function editUser() {
+        var row = $('#dg').datagrid('getSelected');
+        if (row) {
+            $('#dish_form_box').dialog('open').dialog('setTitle', '编辑');
+            $('#dish_form').form('load', row);
+            url = "{:U('ht/Dish/mdish')}?pkid=" + row.id;
+        }
+    }
+    function saveUser() {
+        $('#dish_form').form('submit', {
+            url: url,
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (result) {
+                var result = eval('(' + result + ')');
+                if (result.m) {
+                    $.messager.show({
+                        title: 'Error',
+                        msg: result.m
+                    });
+                } else {
+                    $('#dish_form_box').dialog('close');      // close the dialog
+                    $('#dg').datagrid('reload');    // reload the user data
+                }
+            }
+        });
+    }
+    function destroyUser() {
+        var row = $('#dg').datagrid('getSelected');
+        if (row) {
+            $.messager.confirm('Confirm', 'Are you sure you want to destroy this user?', function (r) {
+                if (r) {
+                    $.post('destroy_user.php', {id: row.id}, function (result) {
+                        if (result.success) {
+                            $('#dg').datagrid('reload');    // reload the user data
+                        } else {
+                            $.messager.show({   // show error message
+                                title: 'Error',
+                                msg: result.errorMsg
+                            });
+                        }
+                    }, 'json');
+                }
+            });
+        }
+    }
+</script>
+<style type="text/css">
+    #fm {
+        margin: 0;
+        padding: 10px 30px;
+    }
+
+    .ftitle {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 0;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .fitem {
+        margin-bottom: 5px;
+    }
+
+    .fitem label {
+        display: inline-block;
+        width: 80px;
+    }
+</style>
